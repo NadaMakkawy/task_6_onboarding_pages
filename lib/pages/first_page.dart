@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_6_onboarding_pages/utils/color.utility.dart';
 
 class FirstPage extends StatelessWidget {
   final PageController pageController;
@@ -8,7 +9,7 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: ColorUtility.scaffoldBackground,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -28,7 +29,7 @@ class FirstPage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber,
+                backgroundColor: ColorUtility.deepYellow,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 100, vertical: 17),
                 shape: RoundedRectangleBorder(

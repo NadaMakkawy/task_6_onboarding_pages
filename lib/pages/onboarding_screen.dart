@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:task_6_onboarding_pages/utils/color.utility.dart';
 
 import 'first_page.dart';
 import '../widgets/onboarding_page_decoration.dart';
+import '../utils/images.utility.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final ValueNotifier<ThemeMode> themeNotifier;
@@ -23,14 +25,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorUtility.scaffoldBackground,
         elevation: 0,
         actions: [
           Row(
             children: [
               Switch(
                 value: isDarkMode,
-                activeColor: Colors.amber,
+                activeColor: ColorUtility.deepYellow,
                 onChanged: (bool value) {
                   widget.themeNotifier.value =
                       value ? ThemeMode.dark : ThemeMode.light;
@@ -40,7 +42,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onPressed: () {
                   _pageController.jumpToPage(4);
                 },
-                child: const Text("Skip", style: TextStyle(color: Colors.grey)),
+                child: const Text("Skip",
+                    style: TextStyle(color: ColorUtility.grey)),
               ),
             ],
           )
@@ -59,26 +62,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 FirstPage(pageController: _pageController),
                 OnboardingPageDecoration(
-                  image: 'assets/certificate.png',
+                  image: ImageUtility.certificate,
                   title: 'Certification and Badges',
                   description:
                       'Earn a certificate after completion of every course',
                   isDarkMode: isDarkMode,
                 ),
                 OnboardingPageDecoration(
-                  image: 'assets/progress.png',
+                  image: ImageUtility.progress,
                   title: 'Progress Tracking',
                   description: 'Check your progress of every course',
                   isDarkMode: isDarkMode,
                 ),
                 OnboardingPageDecoration(
-                  image: 'assets/access.png',
+                  image: ImageUtility.access,
                   title: 'Offline Access',
                   description: 'Make your course available offline',
                   isDarkMode: isDarkMode,
                 ),
                 OnboardingPageDecoration(
-                  image: 'assets/catalog.png',
+                  image: ImageUtility.catalog,
                   title: 'Course Catalog',
                   description: 'View in which courses you are enrolled',
                   isDarkMode: isDarkMode,
@@ -99,12 +102,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   width: 45,
                   decoration: BoxDecoration(
                     color: _currentPage == index + 1
-                        ? Colors.amber
-                        : (isDarkMode ? Colors.white12 : Colors.black),
+                        ? ColorUtility.deepYellow
+                        : (isDarkMode
+                            ? ColorUtility.darkBackground
+                            : Colors.black),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: const [
                       BoxShadow(
-                        color: Colors.black12,
+                        color: ColorUtility.shadows,
                         blurRadius: 5,
                         offset: Offset(0, 5),
                       )
@@ -120,7 +125,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ? ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amber,
+                        backgroundColor: ColorUtility.deepYellow,
                         padding: const EdgeInsets.symmetric(
                             horizontal: 100, vertical: 17),
                         shape: RoundedRectangleBorder(
@@ -138,7 +143,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         _currentPage != 1
                             ? CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Colors.grey,
+                                backgroundColor: ColorUtility.grey,
                                 child: IconButton(
                                   onPressed: () {
                                     if (_currentPage > 1) {
@@ -156,7 +161,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             : const SizedBox(),
                         CircleAvatar(
                           radius: 30,
-                          backgroundColor: Colors.amber,
+                          backgroundColor: ColorUtility.deepYellow,
                           child: IconButton(
                             onPressed: () {
                               if (_currentPage < 4) {

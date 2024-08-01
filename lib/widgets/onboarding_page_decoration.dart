@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_6_onboarding_pages/utils/color.utility.dart';
 
 class OnboardingPageDecoration extends StatelessWidget {
   final String image;
@@ -27,7 +28,9 @@ class OnboardingPageDecoration extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: Container(
-              color: isDarkMode ? Colors.white10 : Colors.transparent,
+              color: isDarkMode
+                  ? ColorUtility.darkModeBackground
+                  : ColorUtility.scaffoldBackground,
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Image.asset(image),
@@ -56,7 +59,7 @@ class OnboardingPageDecoration extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: ColorUtility.grey,
                 ),
               ),
             ],
